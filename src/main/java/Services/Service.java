@@ -9,6 +9,7 @@ public class Service {
     private static String URL = "jdbc:h2:tcp://localhost/~/practica3";
 
     public Service() {
+        registrarDriver();
     }
 
     public static Service getService() {
