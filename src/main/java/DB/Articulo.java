@@ -1,24 +1,33 @@
 package DB;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 public class Articulo {
     private long id;
     private String titulo;
     private String cuerpo;
     private Usuario autor;
-    private Date fecha;
-    private Comentario listaComentarios;
-    private Etiqueta listaEtiquetas;
+    private java.sql.Date fecha;
+    private List<Comentario> listaComentarios;
+    private List<Etiqueta> listaEtiquetas;
 
-    public Articulo(long id, String titulo, String cuerpo, Usuario autor, Date fecha, Comentario listaComentarios, Etiqueta listaEtiquetas) {
+    public Articulo() {
+    }
+
+    public Articulo(String titulo, String cuerpo, Usuario autor, java.sql.Date fecha) {
+        this.titulo = titulo;
+        this.cuerpo = cuerpo;
+        this.autor = autor;
+        this.fecha = fecha;
+    }
+
+    public Articulo(long id, String titulo, String cuerpo, Usuario autor, java.sql.Date fecha) {
         this.id = id;
         this.titulo = titulo;
         this.cuerpo = cuerpo;
         this.autor = autor;
         this.fecha = fecha;
-        this.listaComentarios = listaComentarios;
-        this.listaEtiquetas = listaEtiquetas;
     }
 
     public long getId() {
@@ -53,7 +62,7 @@ public class Articulo {
         this.autor = autor;
     }
 
-    public Date getFecha() {
+    public java.sql.Date getFecha() {
         return fecha;
     }
 
@@ -61,19 +70,19 @@ public class Articulo {
         this.fecha = fecha;
     }
 
-    public Comentario getListaComentarios() {
+    public List<Comentario> getListaComentarios() {
         return listaComentarios;
     }
 
-    public void setListaComentarios(Comentario listaComentarios) {
+    public void setListaComentarios(List<Comentario> listaComentarios) {
         this.listaComentarios = listaComentarios;
     }
 
-    public Etiqueta getListaEtiquetas() {
+    public List<Etiqueta> getListaEtiquetas() {
         return listaEtiquetas;
     }
 
-    public void setListaEtiquetas(Etiqueta listaEtiquetas) {
+    public void setListaEtiquetas(List<Etiqueta> listaEtiquetas) {
         this.listaEtiquetas = listaEtiquetas;
     }
 }
