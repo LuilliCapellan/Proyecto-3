@@ -1,18 +1,40 @@
 package DB;
 
 public class Usuario {
+
+    private long id;
     private String username;
     private String nombre;
     private String password;
-    private boolean administrador;
-    private boolean autor;
+    private Boolean administrator;
+    private Boolean autor;
 
-    public Usuario(String username, String nombre, String password, boolean administrador, boolean autor) {
+    public Usuario() {
+    }
+
+    public Usuario(long id, String username, String nombre, String password, Boolean administrator, Boolean autor) {
+        this.setId(id);
+        this.setUsername(username);
+        this.setNombre(nombre);
+        this.setPassword(password);
+        this.setAdministrator(administrator);
+        this.setAutor(autor);
+    }
+
+    public Usuario(String username, String nombre, String password, Boolean administrator, Boolean autor) {
         this.username = username;
         this.nombre = nombre;
         this.password = password;
-        this.administrador = administrador;
+        this.administrator = administrator;
         this.autor = autor;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -39,19 +61,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public boolean isAdministrador() {
-        return administrador;
+    public Boolean getAdministrator() {
+        return administrator;
     }
 
-    public void setAdministrador(boolean administrador) {
-        this.administrador = administrador;
+    public void setAdministrator(Boolean administrator) {
+        this.administrator = administrator;
     }
 
-    public boolean isAutor() {
+    public Boolean getAutor() {
         return autor;
     }
 
-    public void setAutor(boolean autor) {
+    public void setAutor(Boolean autor) {
         this.autor = autor;
     }
 }

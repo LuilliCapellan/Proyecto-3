@@ -25,8 +25,8 @@ public class Main {
         Spark.get("/", (request, response) -> {
             String Algo = "Test";
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("Algo", Algo);
-            return modelAndView(attributes, "home.ftl");
+            //attributes.put("Algo", Algo);
+            return modelAndView(attributes, "login.ftl");
         }, freeMarkerEngine);
 
     }

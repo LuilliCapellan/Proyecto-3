@@ -12,7 +12,7 @@ public class Service {
         registrarDriver();
     }
 
-    public static Service getService() {
+    public static Service getInstancia() {
         if (service == null) {
             service = new Service();
         }
@@ -27,7 +27,7 @@ public class Service {
         }
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         Connection _conn = null;
         try {
             _conn = DriverManager.getConnection(URL, "sa", "");
