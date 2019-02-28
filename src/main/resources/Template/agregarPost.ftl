@@ -4,18 +4,17 @@
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css"/>
-    <title>Blog - Practica 3</title>
+
+    <title>Blog Post - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/blog-home.css" rel="stylesheet">
+    <link href="../css/blog-post.css" rel="stylesheet">
 
 </head>
 
@@ -39,16 +38,6 @@
                     <a class="nav-link" href="/agregarUsuario">Agregar Usuario</a>
                 </li>
 
-                <#if (usuario??)>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logOut">Salir</a>
-                    </li>
-                <#else>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Log In</a>
-                    </li>
-                </#if>
-
 
             </ul>
         </div>
@@ -60,51 +49,35 @@
 
     <div class="row">
 
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
 
-            <h1 class="my-4">${titulo}</h1>
+            <div class="lead">
+                <!-- Title -->
+                <form method="post" action="/guardarPost">
 
-
-            <#list list as articulo>
-                <!-- Blog Post -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h2 class="card-title">${articulo.titulo}</h2>
-                        <p class="card-text">${articulo.cuerpo}</p>
-                        <a href="/verMas/${articulo.id}" style="float: right" class="btn btn-primary">Leer más
-                            &rarr;</a>
+                    <div class="form-group">
+                        <h1 class="mt-4">Agregar Post</h1>
+                        <hr>
+                        <input type="text" class="form-control" placeholder="Titulo" aria-label="Username"
+                               aria-describedby="basic-addon1" name="titulo">
                     </div>
-                    <div>
 
-                        <#assign x = articulo.id>
-                        <#list etiquetas as etiqueta>
-                            <#assign y = etiqueta.articulo.id>
-                            <#if (x == y?number) && etiqueta.articulo?? >
-                                <span class="badge badge-primary">${etiqueta.etiqueta}</span>
-                            </#if>
-
-                        </#list>
+                    <div class="form-group">
+                        <h4 class="mt-4">Contenido</h4>
+                        <textarea class="form-control" rows="3" placeholder="Cuerpo del post" name="cuerpo"></textarea>
                     </div>
-                    <div class="card-footer text-muted">
-                        Publicado el ${articulo.fecha} por
-                        <a href="/ver/${articulo.autor.id}">${articulo.autor.nombre}</a>
-                    </div>
-                </div>
-            </#list>
 
-            <!-- Pagination -->
-            <ul class="pagination justify-content-center mb-4">
-                <li class="page-item">
-                    <a class="page-link" href="#">&larr; Older</a>
-                </li>
-                <li class="page-item disabled">
-                    <a class="page-link" href="#">Newer &rarr;</a>
-                </li>
-            </ul>
+                    <div class="form-group">
+                        <h4 class="mt-4">Etiquetas</h4>
+                        <input type="text" class="form-control" placeholder="etiqueta1, etiqueta2,..." name="etiquetas">
+                    </div>
+                    <button style="float: right" type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+
 
         </div>
-
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
@@ -146,15 +119,10 @@
     </div>
     <!-- /.container -->
 </footer>
-<!-- /.container -->
-</footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="../vendor/jquery/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../vendor/bootstrap/js/jquery.min.js"></script>
-<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../vendor/bootstrap/js/my-login.js"></script>
+<script src="../vendor/vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

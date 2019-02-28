@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 public class UsuarioDAORun implements UsuarioDAO {
 
+
     @Override
     public void insert(Usuario e) {
         Connection con = null;
@@ -25,6 +26,7 @@ public class UsuarioDAORun implements UsuarioDAO {
             String sql = "Insert into PUBLIC.USUARIO (id, username, nombre, pass, administrador, autor) values(NEXTVAL('SECUENCIA_USUARIO'), ?, ?, ?, ?, ?); ";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
+//        preparedStatement.setLong(1, e.getId());
             preparedStatement.setString(1, e.getUsername());
             preparedStatement.setString(2, e.getNombre());
             preparedStatement.setString(3, e.getPassword());
@@ -122,7 +124,7 @@ public class UsuarioDAORun implements UsuarioDAO {
             while (resultSet.next()) {
 
                 Usuario usuario = new Usuario();
-                setUsers(resultSet, usuario);
+                setRes(resultSet, usuario);
 
                 list.add(usuario);
             }
@@ -143,7 +145,7 @@ public class UsuarioDAORun implements UsuarioDAO {
         return list;
     }
 
-    private void setUsers(ResultSet resultSet, Usuario usuario) throws SQLException {
+    private void setRes(ResultSet resultSet, Usuario usuario) throws SQLException {
         usuario.setId(resultSet.getLong("id"));
         usuario.setNombre(resultSet.getString("nombre"));
         usuario.setUsername(resultSet.getString("username"));
@@ -169,7 +171,7 @@ public class UsuarioDAORun implements UsuarioDAO {
             while (resultSet.next()) {
 
                 usuario = new Usuario();
-                setUsers(resultSet, usuario);
+                setRes(resultSet, usuario);
             }
 
         } catch (Exception e) {
@@ -198,17 +200,32 @@ public class UsuarioDAORun implements UsuarioDAO {
 
             String query = "SELECT * FROM USUARIO u WHERE u.USERNAME = ? AND u.PASS = ?";
             con = Service.getInstancia().getConnection();
+            //
             PreparedStatement prepareStatement = con.prepareStatement(query);
+            //Antes de ejecutar seteo los parametros.
             prepareStatement.setString(1, user);
             prepareStatement.setString(2, pass);
 
             ResultSet resultSet = prepareStatement.executeQuery();
-
+//            String admin = "INSERT INTO USUARIO VALUES (ID = ?,USERNAME = ?,NOMBRE = ? , PASS = ?,ADMIN = ?, AUTOR = ?)";
+//            PreparedStatement prepareStatement = con.prepareStatement(admin);
+//            //Antes de ejecutar seteo los parametros.
+//            prepareStatement.setString(1, "1");
+//            prepareStatement.setString(2, "admin");
+//            prepareStatement.setString(3, "admin");
+//            prepareStatement.setString(4, "admin");
+//            prepareStatement.setString(5, "true");
+//            prepareStatement.setString(6, "true");
 
             while (resultSet.next()) {
 
                 usuario = new Usuario();
-                setUsers(resultSet, usuario);
+                usuario.setId(resultSet.getLong("id"));
+                usuario.setNombre(resultSet.getString("nombre"));
+                usuario.setUsername(resultSet.getString("username"));
+                usuario.setPassword(resultSet.getString("pass"));
+                usuario.setAdministrator(resultSet.getBoolean("administrador"));
+                usuario.setAutor(resultSet.getBoolean("autor"));
             }
 
 
@@ -225,5 +242,6 @@ public class UsuarioDAORun implements UsuarioDAO {
 
         return usuario;
     }
+
 
 }

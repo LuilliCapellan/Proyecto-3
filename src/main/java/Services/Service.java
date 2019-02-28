@@ -5,12 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Service {
-    private static Service service = null;
-    private static String URL = "jdbc:h2:tcp://localhost/~/practica3";
-
-    public Service() {
-        registrarDriver();
-    }
+    private static Service service;
+   //private static String URL = "jdbc:h2:tcp://localhost/~/practica3";
 
     public static Service getInstancia() {
         if (service == null) {
@@ -19,30 +15,17 @@ public class Service {
         return service;
     }
 
-    private void registrarDriver() {
-        try {
-            Class.forName("org.h2.Driver");
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     public Connection getConnection() {
         Connection _conn = null;
         try {
-            _conn = DriverManager.getConnection(URL, "sa", "");
+            String url = "jdbc:h2:tcp://localhost/~/practica3";
+            _conn = DriverManager.getConnection(url, "sa", "");
+            //_conn = DriverManager.getConnection(URL, "sa", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return _conn;
     }
 
-    public void testConnection() {
-        try {
-            getConnection().close();
-            System.out.println("Logro conectarse");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
