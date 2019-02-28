@@ -26,7 +26,7 @@ public class Main {
             String Algo = "Test";
             Map<String, Object> attributes = new HashMap<>();
             //attributes.put("Algo", Algo);
-            return modelAndView(attributes, "login.ftl");
+            return modelAndView(attributes, "home.ftl");
         }, freeMarkerEngine);
 
     }

@@ -50,7 +50,6 @@
                 </#if>
 
 
-
             </ul>
         </div>
     </div>
@@ -73,7 +72,8 @@
                     <div class="card-body">
                         <h2 class="card-title">${articulo.titulo}</h2>
                         <p class="card-text">${articulo.cuerpo}</p>
-                        <a href="/verMas/${articulo.id}" style="float: right" class="btn btn-primary">Leer más &rarr;</a>
+                        <a href="/verMas/${articulo.id}" style="float: right" class="btn btn-primary">Leer más
+                            &rarr;</a>
                     </div>
                     <div>
 
@@ -123,16 +123,16 @@
 
             <!-- Categories Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
+                <h5 class="card-header">Categorias</h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="#">Web Design</a>
+                                    <a href="#">Historia</a>
                                 </li>
                                 <li>
-                                    <a href="#">HTML</a>
+                                    <a href="#">Games</a>
                                 </li>
                                 <li>
                                     <a href="#">Freebies</a>
@@ -142,13 +142,13 @@
                         <div class="col-lg-6">
                             <ul class="list-unstyled mb-0">
                                 <li>
-                                    <a href="#">JavaScript</a>
+                                    <a href="#">Programacion</a>
                                 </li>
                                 <li>
-                                    <a href="#">CSS</a>
+                                    <a href="#">Otros</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tutorials</a>
+                                    <a href="#">Tutoriales</a>
                                 </li>
                             </ul>
                         </div>
@@ -156,12 +156,14 @@
                 </div>
             </div>
 
+
             <!-- Side Widget -->
             <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
+                <h5 class="card-header">Blog</h5>
                 <div class="card-body">
-                    You can put anything you want inside of these side widgets. They are easy to use, and feature
-                    the new Bootstrap 4 card containers!
+                    Blog de prueba para la materia de Programacion WEB dada por el profesor Carlos Camacho, tarea
+                    presentada por el estudiante, Luis Capellan
+                    Matricula 2014-0984
                 </div>
             </div>
 
@@ -176,9 +178,11 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+        <p class="m-0 text-center text-white">Luis Capellan - 2014-0984</p>
     </div>
     <!-- /.container -->
+</footer>
+<!-- /.container -->
 </footer>
 
 <!-- Bootstrap core JavaScript -->
