@@ -13,7 +13,7 @@ import static spark.Spark.modelAndView;
 public class Main {
     public static void main(String[] args) throws SQLException {
         ServiceInit.iniciaDb();
-        Service.getService().testConnection();
+        Service.getInstancia().testConnection();
         ServiceInit.createTable();
         ServiceInit.stopDb();
 

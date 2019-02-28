@@ -1,5 +1,7 @@
 package Services;
 
+import DB.Usuario;
+import Services.Entitys.UsuarioService;
 import org.h2.tools.Server;
 
 import java.sql.Connection;
@@ -50,12 +52,27 @@ public class ServiceInit {
                 "ALTER TABLE COMENTARIO ADD FOREIGN KEY (AUTOR) REFERENCES USUARIO (NOMBRE_USUARIO);\n" +
                 "ALTER TABLE ARTICULO ADD FOREIGN KEY (AUTOR) REFERENCES USUARIO (NOMBRE_USUARIO);\n" +
                 "ALTER TABLE COMENTARIO ADD FOREIGN KEY (ARTICULO) REFERENCES ARTICULO (CODIGO);\n" +
-                "ALTER TABLE ETIQUETA ADD FOREIGN KEY (ARTICULO) REFERENCES ARTICULO (CODIGO);\n" +
-                "MERGE INTO USUARIO KEY (NOMBRE_USUARIO) VALUES ('Lugi', 'Luis Capellan', 'Capellan123', TRUE, TRUE);";
-        Connection _conn = Service.getService().getConnection();
+                "ALTER TABLE ETIQUETA ADD FOREIGN KEY (ARTICULO) REFERENCES ARTICULO (CODIGO);\n";
+
+        String admin = "INSERT INTO USUARIO VALUES (SECUENCIA_USUARIO.nextval, 'admin', 'admin', 'admin',"+true+", "+true+")";
+        String secuenciaUsuario = "CREATE SEQUENCE IF NOT EXISTS SECUENCIA_USUARIO START WITH 0 INCREMENT BY 1";
+        String secuenciaArticulo = "CREATE SEQUENCE IF NOT EXISTS SECUENCIA_ARTICULO START WITH 0 INCREMENT BY 1";
+        String secuenciaEtiqueta= "CREATE SEQUENCE IF NOT EXISTS SECUENCIA_ETIQUETA START WITH 0 INCREMENT BY 1";
+        String secuenciaComentario = "CREATE SEQUENCE IF NOT EXISTS SECUENCIA_COMENTARIO START WITH 0 INCREMENT BY 1";
+
+        Connection _conn = Service.getInstancia().getConnection();
         Statement stm = _conn.createStatement();
         stm.execute(sql);
+        stm.execute(secuenciaUsuario);
+        stm.execute(secuenciaArticulo);
+        stm.execute(secuenciaEtiqueta);
+        stm.execute(secuenciaComentario);
 
+        UsuarioService usuarioService = new UsuarioService();
+        Usuario usuario = usuarioService.validateLogIn("admin", "admin");
+        if (usuario == null){
+            stm.execute(admin);
+        }
         stm.close();
         _conn.close();
     }
